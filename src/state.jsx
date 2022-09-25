@@ -8,7 +8,7 @@ const user = {
 		"https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=400&q=80",
 };
 
-const users = {};
+let users = {};
 // const users = {
 // 	0: { name: "Нина", lastname: "Яблочкова", id: 4 },
 // 	1: { name: "Ипатий", lastname: "Вольпов", id: 6 },
@@ -18,7 +18,7 @@ const users = {};
 // };
 
 export function getUser(userId) {
-	for(let i = 0; i < Object.keys(users).length; i++) {
+	for(let i = 0; i < users.length; i++) {
 		if (users[i].id == userId) return users[i];
 	}
 	return user;
@@ -26,7 +26,6 @@ export function getUser(userId) {
 
 export async function getUsers() {
 	let response = await fetch("http://0755.napli.ru/getUsers");
-	let users = await response.json();
-	console.log(users);
+	users = await response.json();
 	return users;
 }
